@@ -311,16 +311,7 @@ class CucumberJsJsonReporter extends _reporter.default {
 
   getStepDataObject(stepData) {
     const keyword = stepData.keyword || _utils.default.keywordStartsWith(stepData.title, this.options.language) || '';
-    let title = "";
-
-    try {
-      title = (stepData.title.split(keyword).pop() || stepData.title || '').trim();
-    } catch (e) {
-      if (stepData.title) {
-        title = stepData.title;
-      }
-    }
-
+    const title = stepData.title || "";
     const stepResult = {
       arguments: stepData.argument ? [stepData.argument] : [],
       keyword: keyword,
